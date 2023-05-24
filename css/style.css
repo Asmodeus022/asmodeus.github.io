@@ -1,0 +1,407 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    transition: all .3s ease-in-out;
+    color: #fefefe !important;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: url(../img/bg/moon.jpg) no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    margin: auto 20%;
+    transition: background-color 0.3s ease-in-out;
+}
+
+header.sticky {
+    background-color: #266a97;
+}
+
+header .navbar {
+    min-height: 70px;
+}
+
+header .navbar .nav-item {
+    font-size: 1.2em;
+    margin: 0 2em;
+    text-align: center;
+    white-space: nowrap;
+}
+header .navbar .nav-item a {
+    background-color: transparent;
+    border-bottom: solid 3px transparent; 
+    transition: all 0.3s ease;
+}
+
+header .navbar .nav-item a:hover{
+    padding: 0 1em;
+    cursor: pointer;
+    border-color: #4D6E7A;
+    color: #1f1c1c;
+    transform: scale(1.1);
+}
+
+header .navbar .nav-item .nav-link {
+    padding: 0 .3em;
+    margin: 0 .3em;
+}
+
+.main {
+    padding-bottom: 2em;
+}
+
+.main .banner {
+    display: flex;
+    height: calc(100vh - 70px);
+}
+
+.main .banner .row .left {
+    min-width: 320px;
+}
+
+.main .banner .row .left .img-me {
+    width: 90%;
+    border-radius: 20px;
+}
+
+.main .banner .row .left .img-me:hover {
+    transform: scale(1.1);
+}
+
+.main .banner .row .right {
+    text-align: center;
+}
+
+.main .banner .row .right .text-1 h1{
+    font-size: 4em;
+}
+
+.main .banner .row .right .text-1 p{
+    font-size: 1.3em;
+}
+
+
+.main .banner .row .right .text-2 h1{
+    font-size: 1.7em;
+}
+
+.main .banner .row .right .text-2 p{
+    text-align: end;
+    font-size: 1.3em;
+}
+
+.main .banner .icons {
+    display: flex;
+    justify-content: center;
+}
+
+.main .banner .icons .icon img {
+    width: 50px;
+    margin: 0 15px;
+    cursor: pointer;
+}
+
+.main .banner .icons .icon .fb:hover {
+    background-color: #266a97;
+    border-radius: 50%;
+    transform: scale(1.2);
+}
+
+.main .banner .icons .icon .ig:hover {
+    background-color: #266a97;
+    border-radius: 30%;
+    transform: scale(1.2);
+}
+
+.main #about, #gallery, #music, #video {
+    padding-top: 8em;
+}
+
+.main .title {
+    text-align: center;
+    font-size: 2.7em;
+}
+
+.main .content {
+    margin-top: 2em;
+    text-align: justify;
+    line-height: 1.7;
+}
+
+.main #about .content p {
+    text-indent: 4em;
+    font-size: 1.3em;
+}
+
+.main #gallery .carousel .img-wrapper {
+    padding: .7em;
+    display: flex;
+}
+
+.main #gallery .carousel .img-wrapper:hover {
+    transform: scale(1.1);
+}
+
+.main #gallery .carousel .carousel-inner {
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+  
+.main #gallery .carousel .carousel-inner::-webkit-scrollbar {
+    height: 5px;
+}
+  
+.main #gallery .carousel .carousel-inner::-webkit-scrollbar-thumb {
+    background-color: #1e334e;
+    border-radius: 5px;
+}
+
+.main #gallery .carousel .carousel-inner::-webkit-scrollbar-thumb:hover {
+    background-color: #042552;
+}
+
+.main #gallery .carousel .carousel-inner::-webkit-scrollbar-track {
+    background-color: #556272;
+    border-radius: 5px;
+}
+
+.main #gallery .carousel .carousel-inner:hover::-webkit-scrollbar {
+    height: 10px;
+}
+
+.main #gallery .carousel .carousel-inner .img-wrapper img {
+    border-radius: 10px;
+    margin: auto;
+    width: 100%;
+    height: 400px;
+    min-width: 200px;
+    min-height: 200px;
+    object-fit: cover;
+    border: none;
+    cursor: zoom-in;
+}
+
+.main #gallery .carousel #imgModal {
+    display: none;
+    position: fixed; 
+    z-index: 3;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.9);
+    justify-content: center;
+    align-items: center;
+}
+  
+.main #gallery .carousel #imgModal .closeBtn {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    width: 50px;
+    height: 50px;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    text-align: center;
+    line-height: 1;
+    z-index: 4;
+    transition: .3s ease;
+}
+  
+.main #gallery .carousel #imgModal .closeBtn:is(:hover, :focus) {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+    transform: scale(1.3);
+}
+
+.main #gallery .carousel #imgModal .modal-content {
+    margin: 6em auto auto;
+    display: block;
+    width: 90%;
+    height: 80%;
+    object-fit: contain;
+}
+
+.main #gallery .carousel button {
+    display: flex;
+    place-content: center;
+    border-radius: 50%;
+    margin: auto;
+    width: 7em;
+    height: 7em;
+    opacity: 0;
+    transition: .3s ease-in;
+}
+
+.main #gallery .carousel .carousel-inner:hover ~ button {
+    opacity: 1;
+}
+
+.main #gallery .carousel button:hover  {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.main #music .content .player-item {
+    text-align: center;
+}
+
+.main #music .content .player-item .player{
+    background-color: #fefefe;
+    border-radius: 20px;
+    width: 100%;
+}
+
+.main #music .content .player-item .player .imgBox {
+    width: 100%;
+    height: 300px;
+}
+
+.main #music .content .player-item .player .imgBox img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+.main #music .content .player-item .player audio{
+    width: 100%;
+    outline: none;
+}
+
+.main #music .content .player-item .player audio::-webkit-media-controls-panel {
+    background-color: #fefefe;
+}
+
+.main #music .content .player-item p {
+    padding-top: .5em;
+    font-size: 1.4em;
+}
+
+.main #video .content .item {
+    text-align: center;
+}
+
+.main #video .content .item video {
+    width: 100%;
+    border-radius: 20px;
+}
+
+.main #video .content .item p {
+    padding-top: .5em;
+    font-size: 1.4em;
+}
+
+
+
+
+
+
+@media screen and (min-width: 768px) {
+    .main #gallery .carousel-inner {
+      display: flex;
+    }
+
+    .main #gallery .carousel-inner .carousel-item {
+      display: block;
+      margin-right: 0;
+      flex: 0 0 calc(100% / 3);
+      scroll-snap-align: center;
+    }
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+
+    header .navbar .nav-item {
+        height: 2.3em;
+        line-height: 2;
+        width: 90%;
+        margin: auto;
+        transition: all 0.3s ease;
+    }
+
+    header .navbar .nav-item a {
+        border: none;
+    }
+    
+    header .navbar .nav-item:hover{
+        background-color: #556272;
+        transform: scale(1.1);
+    }
+
+    .main .banner {
+        height: auto;
+        margin-top: 3em;
+    }
+
+    .main .banner .row {
+        text-align: center;
+    }
+    
+    .main .banner .row .left .img-me {
+        width: 70%;
+    }
+
+    .main .banner .row .right {
+        margin-top: 2em;
+    }
+
+    .main .banner .row .right .text-2 p{
+        text-align: center;
+    }
+
+    .main .banner .icons {
+        margin-top: 2em;
+    }
+
+    .main #gallery .carousel .carousel-inner img {
+        width: 90%; 
+    }
+
+    .main #gallery .carousel .carousel-inner {
+        overflow-x: hidden;
+    }
+
+    .main #music .content .player-item {
+        margin: 2em auto;
+        width: 90%;
+    }
+
+    .main #video .content .item {
+        margin: 2em auto;
+    }
+
+}
