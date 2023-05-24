@@ -60,7 +60,7 @@ header .navbar .nav-item a {
 header .navbar .nav-item a:hover{
     padding: 0 1em;
     cursor: pointer;
-    border-color: #4D6E7A;
+    border-color: #21b1ff;
     color: #1f1c1c;
     transform: scale(1.1);
 }
